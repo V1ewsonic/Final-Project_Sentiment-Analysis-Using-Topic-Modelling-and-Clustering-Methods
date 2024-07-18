@@ -1,4 +1,4 @@
-<h1>Deskripsi Singkat</h1>
+<h1>Deskripsi Singkat [ID]</h1>
 Analisis sentimen digunakan untuk pemrosesan bahasa alami (Natural Language Processing/ NLP), sehingga dapat melakukan analisis pendapat,perasaan, reaksi orang mengenai suatu hal, misalnya produk, layanan.
 Metode yang digunakan pada analisis sentimen terbagi menjadi 3 (tiga), yaitu: 
 i). tahap 1, penentuan kelas/ label sentimen pada data skala Likert dengan clustering
