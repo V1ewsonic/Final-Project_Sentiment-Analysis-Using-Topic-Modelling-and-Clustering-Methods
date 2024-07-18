@@ -339,14 +339,6 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 
-#-------------Data Preparation / Processing------------#
-
-#-----------------------Training-----------------------#
-
-#----------------------Evaluation----------------------#
-
-#-----------------------Streamlit----------------------#
-
 
 # Sidebar
 menu_sidebar = st.sidebar.selectbox('Modeling',('Clustering - Data Ordinal','Topic Modeling - Komentar',
