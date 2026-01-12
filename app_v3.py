@@ -209,9 +209,9 @@ def training_lda(df):
   output4 = output4[['Teks','sentimen']]
   return output4
 
-# Fungsi pengecekkan apakah format yang diupload CSV
-def is_csv(filename):
-    return filename.lower().endswith('.csv')
+# Fungsi pengecekkan apakah format yang diupload sesuai kriteria
+def is_valid_data(filename):
+    return filename.lower().endswith(('.csv', '.json', '.xls', '.xlsx'))
 
 # Fungsi untuk mengupload data ke website
 def data_load_clust(datas):
@@ -369,13 +369,13 @@ if menu_sidebar == 'Topic Modeling - Komentar':
                     ''')
      
 #    Upload file ke Website
-     uploaded_file = st.file_uploader('Upload File CSV')
+     uploaded_file = st.file_uploader('Upload File Anda')
 
      if uploaded_file is not None:
-       #         Kondisi file harus CSV
+       #  Kondisi file harus CSV
           file_name = uploaded_file.name
 
-          if is_csv(file_name):
+          if is_valid_data(file_name):
                df = data_load(uploaded_file)
                st.dataframe(df)
 
@@ -423,7 +423,7 @@ if menu_sidebar == 'Clustering - Data Ordinal':
        #         Kondisi file harus CSV
         file_name = uploaded_file.name
 
-        if is_csv(file_name):
+        if is_valid_data(file_name):
             df = data_load_clust(uploaded_file)
             st.dataframe(df)
 
