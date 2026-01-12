@@ -493,7 +493,7 @@ if menu_sidebar == 'Clustering - Data Ordinal':
         else:
             st.error('Mohon upload file berekstensi .csv')
     else: 
-        st.info("Silahkan upload file CSV Anda")
+        st.info("Silahkan upload file Data Anda")
         st.stop()
 
 if menu_sidebar == 'Hasil Analisis Sentimen':
