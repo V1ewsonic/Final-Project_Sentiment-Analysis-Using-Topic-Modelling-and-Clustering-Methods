@@ -29,9 +29,22 @@ warnings.filterwarnings('ignore')
 
 # Fungsi untuk mengupload data ke website
 def data_load(datas):
-  import pandas as pd
-  data = pd.read_csv(datas)
-  return data
+    import pandas as pd
+    import os
+
+    ext = os.path.splitext(datas)[1].lower()
+
+    if ext == ".csv":
+        data = pd.read_csv(datas)
+    elif ext == ".json":
+        data = pd.read_json(datas)
+    elif ext in [".xls", ".xlsx"]:
+        data = pd.read_excel(datas)
+    else:
+        raise ValueError("Format file tidak didukung. Gunakan CSV, JSON, atau Excel.")
+
+    return data
+
 
 def change_name(df,kata):
     '''
@@ -585,4 +598,5 @@ if menu_sidebar == 'Hasil Analisis Sentimen':
     )
 
     
+
 
