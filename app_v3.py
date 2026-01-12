@@ -417,7 +417,7 @@ if menu_sidebar == 'Clustering - Data Ordinal':
                  \n4. Klik tombol 'Latih Data' untuk mendapatkan hasil _cluster_
                     ''')
 #    Upload file ke Website
-    uploaded_file = st.file_uploader('Upload File CSV')
+    uploaded_file = st.file_uploader('Upload File Data')
 
     if uploaded_file is not None:
        #         Kondisi file harus CSV
