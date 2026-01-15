@@ -29,22 +29,9 @@ warnings.filterwarnings('ignore')
 
 # Fungsi untuk mengupload data ke website
 def data_load(datas):
-    import pandas as pd
-    import os
-
-    ext = os.path.splitext(datas)[1].lower()
-
-    if ext == ".csv":
-        data = pd.read_csv(datas)
-    elif ext == ".json":
-        data = pd.read_json(datas)
-    elif ext in [".xls", ".xlsx"]:
-        data = pd.read_excel(datas)
-    else:
-        raise ValueError("Format file tidak didukung. Gunakan CSV, JSON, atau Excel.")
-
-    return data
-
+  import pandas as pd
+  data = pd.read_csv(datas)
+  return data
 
 def change_name(df,kata):
     '''
@@ -209,9 +196,9 @@ def training_lda(df):
   output4 = output4[['Teks','sentimen']]
   return output4
 
-# Fungsi pengecekkan apakah format yang diupload sesuai kriteria
-def is_valid_data(filename):
-    return filename.lower().endswith(('.csv', '.json', '.xls', '.xlsx'))
+# Fungsi pengecekkan apakah format yang diupload CSV
+def is_csv(filename):
+    return filename.lower().endswith('.csv')
 
 # Fungsi untuk mengupload data ke website
 def data_load_clust(datas):
@@ -369,13 +356,13 @@ if menu_sidebar == 'Topic Modeling - Komentar':
                     ''')
      
 #    Upload file ke Website
-     uploaded_file = st.file_uploader('Upload File Anda')
+     uploaded_file = st.file_uploader('Upload File CSV')
 
      if uploaded_file is not None:
-       #  Kondisi file harus CSV
+       #         Kondisi file harus CSV
           file_name = uploaded_file.name
 
-          if is_valid_data(file_name):
+          if is_csv(file_name):
                df = data_load(uploaded_file)
                st.dataframe(df)
 
@@ -417,13 +404,13 @@ if menu_sidebar == 'Clustering - Data Ordinal':
                  \n4. Klik tombol 'Latih Data' untuk mendapatkan hasil _cluster_
                     ''')
 #    Upload file ke Website
-    uploaded_file = st.file_uploader('Upload File Data', type=['csv', 'json', 'xlsx', 'xls'])
+    uploaded_file = st.file_uploader('Upload File CSV')
 
     if uploaded_file is not None:
        #         Kondisi file harus CSV
         file_name = uploaded_file.name
 
-        if is_valid_data(file_name):
+        if is_csv(file_name):
             df = data_load_clust(uploaded_file)
             st.dataframe(df)
 
@@ -493,7 +480,7 @@ if menu_sidebar == 'Clustering - Data Ordinal':
         else:
             st.error('Mohon upload file berekstensi .csv')
     else: 
-        st.info("Silahkan upload file Data Anda")
+        st.info("Silahkan upload file CSV Anda")
         st.stop()
 
 if menu_sidebar == 'Hasil Analisis Sentimen':
@@ -598,6 +585,3 @@ if menu_sidebar == 'Hasil Analisis Sentimen':
     )
 
     
-
-
-
